@@ -7,6 +7,11 @@
 // Started on  Fri Apr 13 14:23:44 2018 Sylvain Chaugny
 //
 
-int main()
-{
+#include		"Generator/Generator.hpp"
+
+int			main(const int ac, const char **av) {
+  pwdgen::Generator	gen;
+
+  gen.init();
+  return gen.process(ac, av);
 }
