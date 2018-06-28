@@ -5,7 +5,7 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Mon Jun 25 17:53:49 2018 Sylvain Chaugny
-// Last update Mon Jun 25 17:54:35 2018 Sylvain Chaugny
+// Last update Thu Jun 28 12:04:36 2018 Sylvain Chaugny
 //
 
 #ifndef				PWDGEN_E_COMMAND_HPP_
@@ -14,7 +14,10 @@
 namespace			pwdgen {
   enum				e_command {
     NONE			= 0,
-    HELP			= 1,
+    DEFAULT			= 1,
+    HELP,
+    SYMBOLS,
+    COMMANDS
   };
 }
 

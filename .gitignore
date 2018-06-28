@@ -4,3 +4,4 @@ pwdgen
 #*#
 vgcore*
 build/
+.build/

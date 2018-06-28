@@ -5,7 +5,7 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Mon Jun 25 17:26:35 2018 Sylvain Chaugny
-// Last update Mon Jun 25 17:28:19 2018 Sylvain Chaugny
+// Last update Thu Jun 28 18:02:27 2018 Sylvain Chaugny
 //
 
 #ifndef				PWDGEN_PWDGENCOMMAND_HPP_
@@ -23,6 +23,7 @@ namespace			pwdgen {
     virtual ~PwdgenCommand() = default;
 
     void			setDescription(std::string const &desc);
+    std::string const		&getDescription() const;
   };
 }
 

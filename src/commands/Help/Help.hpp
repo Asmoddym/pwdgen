@@ -5,17 +5,21 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Mon Jun 25 14:43:17 2018 Sylvain Chaugny
-// Last update Mon Jun 25 17:34:02 2018 Sylvain Chaugny
+// Last update Thu Jun 28 18:02:09 2018 Sylvain Chaugny
 //
 
 #ifndef				PWDGEN_HELP_HPP_
 #define				PWDGEN_HELP_HPP_
 
+# include			<map>
 # include			"commands/PwdgenCommand/PwdgenCommand.hpp"
 
 namespace			pwdgen {
+  using				t_descriptions = std::map<std::string, std::string>;
+
   class				Help : public PwdgenCommand {
   private:
+    t_descriptions		_commands_descriptions;
     std::string			_executable_name;
 
   public:
@@ -24,11 +28,15 @@ namespace			pwdgen {
 
     int				onTrigger(std::string const &arg) override;
     int				onFailure(std::string const &arg) override;
+    int				onSuccess(std::string const &arg) override;
 
     void			setExecutableName(std::string const &name);
+    void		        addCommandHelp(PwdgenCommand const &cmd);
 
   private:
     void			displayHelp();
+    std::string			parseTriggers(std::vector<std::string> const &array);
+    size_t			getSpacePadding();
   };
 }
 
