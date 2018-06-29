@@ -5,7 +5,7 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Wed Jun 27 09:57:08 2018 Sylvain Chaugny
-// Last update Wed Jun 27 10:09:38 2018 Sylvain Chaugny
+// Last update Fri Jun 29 16:52:36 2018 Sylvain Chaugny
 //
 
 #ifndef				PWDGEN_SYMBOLS_HPP_
@@ -16,7 +16,6 @@
 namespace			pwdgen {
   class				Symbols : public PwdgenCommand {
   private:
-    std::string			_executable_name;
     std::string			_symbols;
 
   public:
@@ -26,6 +25,8 @@ namespace			pwdgen {
     int				onTrigger(std::string const &arg) override;
     int				onFailure(std::string const &arg) override;
     int				onSuccess(std::string const &arg) override;
+
+    std::string const		&getSymbols() const;
   };
 }
 

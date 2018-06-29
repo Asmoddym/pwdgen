@@ -9,7 +9,7 @@ set(EXECUTABLE_OUTPUT_PATH ${BUILD_DIRECTORY})
 include_directories(arguments-parser/arguments-parser)
 include_directories(src)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Generator/Generator.hpp src/Generator/Generator.cpp src/commands/PwdgenCommand/PwdgenCommand.cpp src/commands/PwdgenCommand/PwdgenCommand.hpp src/commands/Help/Help.cpp src/commands/Help/Help.hpp src/commands/Symbols/Symbols.cpp src/commands/Symbols/Symbols.hpp src/commands/utl/enum/e_command.hpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/Generator/Generator.hpp src/Generator/Generator.cpp src/commands/utl/enum/e_command.hpp src/commands/utl/ArgumentCondition/ArgumentCondition.cpp src/commands/utl/ArgumentCondition/ArgumentCondition.hpp src/commands/PwdgenCommand/PwdgenCommand.cpp src/commands/PwdgenCommand/PwdgenCommand.hpp src/commands/Help/Help.cpp src/commands/Help/Help.hpp src/commands/Symbols/Symbols.cpp src/commands/Symbols/Symbols.hpp src/commands/NoSymbols/NoSymbols.cpp src/commands/NoSymbols/NoSymbols.hpp src/commands/StringsNumber/StringsNumber.cpp src/commands/StringsNumber/StringsNumber.hpp src/commands/StringsSize/StringsSize.cpp src/commands/StringsSize/StringsSize.hpp)
 
 add_subdirectory(arguments-parser)
 

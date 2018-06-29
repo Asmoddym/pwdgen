@@ -5,7 +5,7 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Mon Jun 25 14:43:17 2018 Sylvain Chaugny
-// Last update Thu Jun 28 18:02:09 2018 Sylvain Chaugny
+// Last update Fri Jun 29 13:04:10 2018 Sylvain Chaugny
 //
 
 #ifndef				PWDGEN_HELP_HPP_
@@ -31,11 +31,11 @@ namespace			pwdgen {
     int				onSuccess(std::string const &arg) override;
 
     void			setExecutableName(std::string const &name);
-    void		        addCommandHelp(PwdgenCommand const &cmd);
+    void		        addCommandHelp(PwdgenCommand &cmd);
 
   private:
     void			displayHelp();
-    std::string			parseTriggers(std::vector<std::string> const &array);
+    std::string			parseTriggers(std::vector<std::string> const &array, bool arg);
     size_t			getSpacePadding();
   };
 }

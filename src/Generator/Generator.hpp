@@ -5,16 +5,16 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Wed Jun 13 16:04:27 2018 Sylvain Chaugny
-// Last update Mon Jun 25 17:57:04 2018 Sylvain Chaugny
+// Last update Fri Jun 29 16:42:50 2018 Sylvain Chaugny
 //
 
 #ifndef				PWDGEN_GENERATOR_HPP_
 # define			PWDGEN_GENERATOR_HPP_
 
-# include			"arguments-parser.hpp"
 # include			<vector>
 # include			<map>
 # include			<string>
+# include			"arguments-parser.hpp"
 
 using namespace			arguments_parser;
 
@@ -33,9 +33,8 @@ namespace			pwdgen {
 
     int				process(const int ac, const char **av);
     int				init();
-
-  private:
-    int				display_help(std::string const &str);
+    void			generateStrings();
+    int				getRandom();
   };
 }
 

@@ -5,10 +5,9 @@
 // Login   <sylvain.chaugny@epitech.eu>
 //
 // Started on  Wed Jun 27 09:58:36 2018 Sylvain Chaugny
-// Last update Thu Jun 28 18:03:40 2018 Sylvain Chaugny
+// Last update Fri Jun 29 17:14:28 2018 Sylvain Chaugny
 //
 
-#include			<iostream>
 #include			"Symbols.hpp"
 
 pwdgen::Symbols::Symbols() :
@@ -21,15 +20,19 @@ pwdgen::Symbols::Symbols() :
 }
 
 int				pwdgen::Symbols::onTrigger(std::string const &arg) {
-  std::cout << "symbol = " << arg << std::endl;
+  _symbols = arg;
   return 0;
 }
 
 
-int				pwdgen::Symbols::onFailure(std::string const &arg) {
+int				pwdgen::Symbols::onFailure(std::string const &) {
   return _failure_code;
 }
 
-int				pwdgen::Symbols::onSuccess(std::string const &arg) {
+int				pwdgen::Symbols::onSuccess(std::string const &) {
   return _success_code;
+}
+
+std::string const		&pwdgen::Symbols::getSymbols() const {
+  return _symbols;
 }
