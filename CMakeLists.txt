@@ -4,7 +4,7 @@
 #
 # Author              : Asmoddym
 # Created at          : 06 Jan 2020, 10:50:51
-# Last modification at: 06 Jan 2020, 10:56:01
+# Last modification at: 06 Jan 2020, 11:42:42
 #
 
 cmake_minimum_required(VERSION 3.8)
