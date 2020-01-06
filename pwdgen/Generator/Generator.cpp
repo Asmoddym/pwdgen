@@ -4,11 +4,13 @@
 //
 // Author              : Asmoddym
 // Created at          : 06 Jan 2020, 11:30:11
-// Last modification at: 06 Jan 2020, 11:39:00
+// Last modification at: 06 Jan 2020, 11:47:08
 //
 
 #include "Generator.hpp"
 #include "pwdgen/pwdgen/flags/Length/Length.hpp"
+#include "pwdgen/pwdgen/flags/Number/Number.hpp"
+#include "pwdgen/pwdgen/flags/NoSymbols/NoSymbols.hpp"
 #include <iostream>
 #include <sys/time.h>
 
@@ -20,6 +22,8 @@ pwdgen::Generator::~Generator() {
 
 void pwdgen::Generator::init() {
 	_parser.addCommand<flags::Length>();
+	_parser.addCommand<flags::Number>();
+	_parser.addCommand<flags::NoSymbols>();
 }
 
 int pwdgen::Generator::process(int ac, const char **av) {
@@ -38,7 +42,7 @@ void pwdgen::Generator::generateStrings() {
 
   gettimeofday(&time, NULL);
   srand(time.tv_usec);
-  iterations = 5;//_parser.getCommand<flags::Number>("Number").get();
+  iterations = _parser.getCommand<flags::Number>("Number").get();
   size = _parser.getCommand<flags::Length>("Length").get();
   for (int i = 0; i < iterations; i++) {
     for (int len = 0; len < size; len++) {
@@ -50,7 +54,7 @@ void pwdgen::Generator::generateStrings() {
 
 int pwdgen::Generator::getRandom() {
   int c;
-  std::string symbols = /*_parser.getCommand("NoSymbols").hasBeenTriggered() ? "" :*/ "()[]{}#&-_$*=+?;.,!";
+  std::string symbols = _parser.getCommand("NoSymbols").hasBeenTriggered() ? "" : "()[]{}#&-_$*=+?;.,!";
   bool condition = false;
 
   while (!condition) {
