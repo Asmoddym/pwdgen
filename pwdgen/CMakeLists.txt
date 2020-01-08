@@ -4,7 +4,7 @@
 #
 # Author              : Asmoddym
 # Created at          : 06 Jan 2020, 10:50:51
-# Last modification at: 06 Jan 2020, 11:47:49
+# Last modification at: 08 Jan 2020, 12:05:58
 #
 
 cmake_minimum_required(VERSION 3.0)
@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME} main.cpp
 	flags/Length/Length.hpp flags/Length/Length.cpp
 	flags/Number/Number.hpp flags/Number/Number.cpp
 	flags/NoSymbols/NoSymbols.hpp flags/NoSymbols/NoSymbols.cpp
+	flags/Hexadecimal/Hexadecimal.hpp flags/Hexadecimal/Hexadecimal.cpp
 )
 
 add_dependencies(${PROJECT_NAME} arguments-parser)
