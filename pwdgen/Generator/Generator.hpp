@@ -4,7 +4,7 @@
 //
 // Author              : Asmoddym
 // Created at          : 06 Jan 2020, 11:30:11
-// Last modification at: 06 Jan 2020, 11:34:35
+// Last modification at: 08 Jan 2020, 14:33:52
 //
 
 #ifndef PWDGEN_PWDGEN_GENERATOR_HPP_
@@ -31,6 +31,7 @@ namespace pwdgen {
 		bool isNumeric(std::string const &s);
 		bool isAlphaNumeric(int c);
 		bool isIn(int c, std::string const &s);
+		bool isAlphabetical(int c);
 	};
 }
 

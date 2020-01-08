@@ -4,7 +4,7 @@
 //
 // Author              : Asmoddym
 // Created at          : 06 Jan 2020, 11:30:11
-// Last modification at: 08 Jan 2020, 12:08:35
+// Last modification at: 08 Jan 2020, 14:35:03
 //
 
 #include "Generator.hpp"
@@ -12,6 +12,8 @@
 #include "pwdgen/pwdgen/flags/Number/Number.hpp"
 #include "pwdgen/pwdgen/flags/NoSymbols/NoSymbols.hpp"
 #include "pwdgen/pwdgen/flags/Hexadecimal/Hexadecimal.hpp"
+#include "pwdgen/pwdgen/flags/Decimal/Decimal.hpp"
+#include "pwdgen/pwdgen/flags/Alphabetical/Alphabetical.hpp"
 #include <iostream>
 #include <sys/time.h>
 
@@ -26,6 +28,8 @@ void pwdgen::Generator::init() {
 	_parser.addCommand<flags::Number>();
   _parser.addCommand<flags::NoSymbols>();
   _parser.addCommand<flags::Hexadecimal>();
+  _parser.addCommand<flags::Decimal>();
+  _parser.addCommand<flags::Alphabetical>();
 }
 
 int pwdgen::Generator::process(int ac, const char **av) {
@@ -59,10 +63,16 @@ int pwdgen::Generator::getRandom() {
   std::string symbols = _parser.getCommand("NoSymbols").hasBeenTriggered() ? "" : "()[]{}#&-_$*=+?;.,!";
   bool condition = false;
   bool hex = _parser.getCommand("Hexadecimal").hasBeenTriggered();
+  bool dec = _parser.getCommand("Decimal").hasBeenTriggered();
+  bool alpha = _parser.getCommand("Alphabetical").hasBeenTriggered();
 
   while (!condition) {
     c = rand() % 128;
-    if (hex) {
+    if (dec) {
+      condition = isIn(c, "0123456789");
+    } else if (alpha) {
+      condition = isAlphabetical(c);
+    } else if (hex) {
       condition = isIn(c, "0123456789abcdef");
     } else {
       condition = isAlphaNumeric(c) ? true : !symbols.empty() && isIn(c, symbols);
@@ -90,5 +100,9 @@ bool pwdgen::Generator::isIn(int c, std::string const &str) {
 }
 
 bool pwdgen::Generator::isAlphaNumeric(int c) {
-  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'A') || (c >= '0' && c <= '9');
+  return isAlphabetical(c) || (c >= '0' && c <= '9');
+}
+
+bool pwdgen::Generator::isAlphabetical(int c) {
+  return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'A');
 }
